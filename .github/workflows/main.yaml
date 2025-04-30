@@ -26,9 +26,10 @@ jobs:
 
 #dependency-scanning
       - name: Run Dependency Scanning with OWASP Dependency-Check
-        uses: dependency-check/scan-action@v3
+        uses: dependency-check/scan-action@v2
         with:
           project: 'nodejs-webapp'
+
 
 #code-linting
       - name: Set up Node.js
