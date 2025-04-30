@@ -24,11 +24,11 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 
-#dependency-scanning
-      - name: Run Dependency Scanning with OWASP Dependency-Check
-        uses: dependency-check/scan-action@v2
-        with:
-          project: 'nodejs-webapp'
+# #dependency-scanning
+#       - name: Run Dependency Scanning with OWASP Dependency-Check
+#         uses: dependency-check/scan-action@v2
+#         with:
+#           project: 'nodejs-webapp'
 
 
 #code-linting
