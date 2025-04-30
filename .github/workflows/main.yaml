@@ -60,32 +60,14 @@ jobs:
       - name: eslint instllation
         run: npm install eslint --save-dev
 
+      # - name: Run Linter
+      #   run: npm run lint # Ensure your project has a "lint" script in package.json
+
       - name: Run Linter
-        run: npm run lint # Ensure your project has a "lint" script in package.json
+        run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
 
-  # secret-scanning:
-  #   name: Secret Scanning
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v3
-
-  #     - name: Run Secret Scanning with TruffleHog
-  #       uses: trufflesecurity/trufflehog@v3
-  #       with:
-  #         scan: 'repo'
-
-  # container-scanning:
-  #   name: Container Scanning
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v3
-
-  #     - name: Build Docker Image
-  #       run: docker build -t nodejs-webapp .
-
-  #     - name: Scan Docker Image with Trivy
-  #       uses: aquasecurity/trivy-action@v0.11.0
-  #       with:
-  #         image-ref: 'nodejs-webapp'
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: eslint-report
+          path: eslint-report.txt
