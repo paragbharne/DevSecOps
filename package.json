@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "nodejs-webapp",
   "main": "server.js",
+  "type": "module", // Add this line
   "author": {
     "name": "alagrawa"
   },
