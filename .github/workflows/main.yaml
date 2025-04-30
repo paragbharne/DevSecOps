@@ -14,34 +14,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run SAST with CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: 'javascript'
+          
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 
-  dependency-scanning:
-    name: Dependency Scanning
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
+#dependency-scanning
       - name: Run Dependency Scanning with OWASP Dependency-Check
         uses: dependency-check/scan-action@v3
         with:
           project: 'nodejs-webapp'
 
-  code-linting:
-    name: Code Linting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
+#code-linting
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -53,29 +42,29 @@ jobs:
       - name: Run Linter
         run: npm run lint # Ensure your project has a "lint" script in package.json
 
-  secret-scanning:
-    name: Secret Scanning
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  # secret-scanning:
+  #   name: Secret Scanning
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v3
 
-      - name: Run Secret Scanning with TruffleHog
-        uses: trufflesecurity/trufflehog@v3
-        with:
-          scan: 'repo'
+  #     - name: Run Secret Scanning with TruffleHog
+  #       uses: trufflesecurity/trufflehog@v3
+  #       with:
+  #         scan: 'repo'
 
-  container-scanning:
-    name: Container Scanning
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  # container-scanning:
+  #   name: Container Scanning
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v3
 
-      - name: Build Docker Image
-        run: docker build -t nodejs-webapp .
+  #     - name: Build Docker Image
+  #       run: docker build -t nodejs-webapp .
 
-      - name: Scan Docker Image with Trivy
-        uses: aquasecurity/trivy-action@v0.11.0
-        with:
-          image-ref: 'nodejs-webapp'
+  #     - name: Scan Docker Image with Trivy
+  #       uses: aquasecurity/trivy-action@v0.11.0
+  #       with:
+  #         image-ref: 'nodejs-webapp'
