@@ -8,5 +8,8 @@
   },
   "dependencies": {
     "natives": "^1.1.6"
+  },
+  "scripts": {
+    "lint": "eslint ."
   }
 }
