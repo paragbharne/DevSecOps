@@ -67,7 +67,7 @@ jobs:
         run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
 
       - name: Upload Lint Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: eslint-report
           path: eslint-report.txt
