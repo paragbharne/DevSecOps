@@ -29,12 +29,15 @@ jobs:
           
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
+        with:
+          output: .github/codeql/codeql-results.sarif
 
       - name: Upload CodeQL SARIF Report
         uses: actions/upload-artifact@v3
         with:
           name: codeql-sarif-report
           path: .github/codeql/codeql-results.sarif
+
 
 # #dependency-scanning
 #       - name: Run Dependency Scanning with OWASP Dependency-Check
