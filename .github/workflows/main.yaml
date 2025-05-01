@@ -140,3 +140,4 @@ jobs:
         with:
           name: trivy-docker-scan-report
           path: trivy-docker-scan.txt
+          category: 'Trivy_report'
