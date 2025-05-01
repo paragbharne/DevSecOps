@@ -4,3 +4,10 @@ blobl_key =Eby8vdM02xNOcqFeq7Z1dEBy3n9hft8hGzHb3Q0jlz/azxT8ZAAhL9vDOMkGd1TcQpYvN
 
 aws_access_key_id = AKIAFAKEACCESSKEY1234
 password = wJalrXUtnFEMI/K7MDENG/bPxRfiCYFAKESECRETKEY
+
+
+aws_access_key_id = AKIB2HOXE9X6CWVUC7PK
+aws_secret_access_key = tKl52jpN7IJ7RwSoz5BUM3n91BPC9aQG072LiZiG
+
+
+sonar_token:- sq7rTGphUbAvmQ9YpbfMQGGlA
