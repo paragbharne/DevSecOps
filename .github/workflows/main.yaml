@@ -132,15 +132,15 @@ jobs:
         uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: 'nodejs-webapp:${{ github.sha }}'
-          format: 'table'
+          format: json
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          output: 'trivy-docker-scan.txt'
+          output: 'trivy-report.json'
 
       - name: Upload Trivy Docker Scan Report
         uses: actions/upload-artifact@v4
         with:
           name: trivy-docker-scan-report
-          path: trivy-docker-scan.txt
+          path: trivy-report.json
