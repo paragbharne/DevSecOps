@@ -126,18 +126,21 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t nodejs-webapp:latest .
+          docker build -t nodejs-webapp:${{ github.sha }} .
 
-      - name: Scan Docker Image with Trivy
-        uses: aquasecurity/trivy-action@v0.11.0
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: nodejs-webapp:latest
+          image-ref: 'nodejs-webapp:${{ github.sha }}'
           format: 'table'
-          output: trivy-docker-scan.txt
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+          output: 'trivy-docker-scan.txt'
 
       - name: Upload Trivy Docker Scan Report
         uses: actions/upload-artifact@v4
         with:
           name: trivy-docker-scan-report
           path: trivy-docker-scan.txt
-          category: 'Trivy_report'
