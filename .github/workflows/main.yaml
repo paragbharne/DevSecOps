@@ -118,3 +118,25 @@ jobs:
           else
             echo "✅ No secrets detected by Gitleaks." >> $GITHUB_STEP_SUMMARY
           fi
+
+#Docker build and scanning
+# Docker Build and Scanning with Trivy
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker Image
+        run: |
+          docker build -t nodejs-webapp:latest .
+
+      - name: Scan Docker Image with Trivy
+        uses: aquasecurity/trivy-action@v0.11.0
+        with:
+          image-ref: nodejs-webapp:latest
+          format: 'table'
+          output: trivy-docker-scan.txt
+
+      - name: Upload Trivy Docker Scan Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy-docker-scan-report
+          path: trivy-docker-scan.txt
