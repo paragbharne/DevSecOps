@@ -85,7 +85,7 @@ jobs:
           osv-scanner --lockfile=package-lock.json > osv-results.txt || true
 
       - name: Upload OSV Scanner Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: osv-scanner-report
           path: osv-results.txt
