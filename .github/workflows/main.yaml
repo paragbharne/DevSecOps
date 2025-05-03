@@ -1,143 +1,3 @@
-# name: DevSecOps Pipeline
-
-# on:
-#   workflow_dispatch:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
-
-# jobs:
-#   sast:
-#     name: Static Application Security Testing (SAST)
-#     runs-on: ubuntu-latest
-#     permissions:
-#       actions: read
-#       contents: read
-#       security-events: write  # Required for CodeQL
-
-#     steps:
-#       - name: Checkout Code
-#         uses: actions/checkout@v4
-
-#       - name: Run SAST with CodeQL
-#         uses: github/codeql-action/init@v3
-#         with:
-#           languages: 'javascript'
-          
-#       - name: Perform CodeQL Analysis
-#         uses: github/codeql-action/analyze@v3
-#         with:
-#           output: .github/codeql/codeql-results.sarif
-
-#       - name: Upload CodeQL SARIF Results
-#         uses: github/codeql-action/upload-sarif@v3
-#         with:
-#           sarif_file: .github/codeql/codeql-results.sarif
-#           category: 'Codeql_report'
-
-
-
-
-# #code-linting
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '18'
-
-#       - name: Install Dependencies
-#         run: npm install
-
-#       - name: eslint instllation
-#         run: npm install eslint --save-dev
-
-#       # - name: Run Linter
-#       #   run: npm run lint # Ensure your project has a "lint" script in package.json
-
-#       - name: Run Linter
-#         run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
-
-#       - name: Upload Lint Report
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: eslint-report
-#           path: eslint-report.txt
-
-# # Trivy for the dependecny scanning
-
-# # Dependency Scanning with OSV Scanner
-#       - name: Install OSV Scanner
-#         run: |
-#           curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
-#           chmod +x /usr/local/bin/osv-scanner
-
-#       - name: Run OSV Scanner
-#         run: |
-#           osv-scanner --lockfile=package-lock.json > osv-results.txt || true
-
-#       - name: Upload OSV Scanner Report
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: osv-scanner-report
-#           path: osv-results.txt
-
-# # Secrets Detection in Github repos
-
-# # Secrets Detection with Gitleaks
-#       - name: Run Gitleaks Secret Scan
-#         uses: zricethezav/gitleaks-action@v1.6.0
-#         with:
-#           config: "" # Optional: Path to a custom Gitleaks config file
-#           output: gitleaks-results.json
-#           verbose: true
-
-#       - name: Upload Gitleaks Report
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: gitleaks-results
-#           path: gitleaks-results.json
-
-#       - name: Gitleaks Job Summary
-#         if: always()
-#         run: |
-#           if [ -s gitleaks-results.json ]; then
-#             echo "### 🛑 Gitleaks detected secrets 🛑" >> $GITHUB_STEP_SUMMARY
-#             echo "| Rule ID | Commit | Start Line | Author | Date | Email | File |" >> $GITHUB_STEP_SUMMARY
-#             echo "|---------|--------|------------|--------|------|-------|------|" >> $GITHUB_STEP_SUMMARY
-#             jq -r '.[] | 
-#               "| \(.RuleID // "N/A") | \(.Commit // "N/A") | \(.StartLine // "N/A") | \(.Author // "N/A") | \(.Date // "N/A") | \(.Email // "N/A") | \(.File // "N/A") |"' gitleaks-results.json >> $GITHUB_STEP_SUMMARY
-#           else
-#             echo "✅ No secrets detected by Gitleaks." >> $GITHUB_STEP_SUMMARY
-#           fi
-
-# #Docker build and scanning
-# # Docker Build and Scanning with Trivy
-#       - name: Set up Docker Buildx
-#         uses: docker/setup-buildx-action@v2
-
-#       - name: Build Docker Image
-#         run: |
-#           docker build -t nodejs-webapp:${{ github.sha }} .
-
-#       - name: Run Trivy vulnerability scanner
-#         uses: aquasecurity/trivy-action@0.28.0
-#         with:
-#           image-ref: 'nodejs-webapp:${{ github.sha }}'
-#           format: json
-#           exit-code: '0'
-#           ignore-unfixed: true
-#           vuln-type: 'os,library'
-#           severity: 'CRITICAL,HIGH'
-#           output: 'trivy-report.json'
-
-#       - name: Upload Trivy Docker Scan Report
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: trivy-docker-scan-report
-#           path: trivy-report.json
-
 name: DevSecOps Pipeline
 
 on:
@@ -150,8 +10,8 @@ on:
       - main
 
 jobs:
-  devsecops:
-    name: DevSecOps Pipeline
+  sast:
+    name: Static Application Security Testing (SAST)
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -159,11 +19,9 @@ jobs:
       security-events: write  # Required for CodeQL
 
     steps:
-      # Step 1: Checkout Code
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Run SAST with CodeQL
       - name: Run SAST with CodeQL
         uses: github/codeql-action/init@v3
         with:
@@ -172,9 +30,18 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
-          output: results/codeql-results.sarif
+          output: .github/codeql/codeql-results.sarif
 
-      # Step 3: Run ESLint
+      - name: Upload CodeQL SARIF Results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: .github/codeql/codeql-results.sarif
+          category: 'Codeql_report'
+
+
+
+
+#code-linting
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -183,10 +50,24 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Linter
-        run: npm run lint > results/eslint-report.txt || true
+      - name: eslint instllation
+        run: npm install eslint --save-dev
 
-      # Step 4: Run OSV Scanner
+      # - name: Run Linter
+      #   run: npm run lint # Ensure your project has a "lint" script in package.json
+
+      - name: Run Linter
+        run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: eslint-report.txt
+
+# Trivy for the dependecny scanning
+
+# Dependency Scanning with OSV Scanner
       - name: Install OSV Scanner
         run: |
           curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
@@ -194,16 +75,45 @@ jobs:
 
       - name: Run OSV Scanner
         run: |
-          osv-scanner --lockfile=package-lock.json > results/osv-results.txt || true
+          osv-scanner --lockfile=package-lock.json > osv-results.txt || true
 
-      # Step 5: Run Gitleaks
+      - name: Upload OSV Scanner Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: osv-scanner-report
+          path: osv-results.txt
+
+# Secrets Detection in Github repos
+
+# Secrets Detection with Gitleaks
       - name: Run Gitleaks Secret Scan
         uses: zricethezav/gitleaks-action@v1.6.0
         with:
-          output: results/gitleaks-results.json
+          config: "" # Optional: Path to a custom Gitleaks config file
+          output: gitleaks-results.json
           verbose: true
 
-      # Step 6: Build Docker Image and Scan with Trivy
+      - name: Upload Gitleaks Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-results
+          path: gitleaks-results.json
+
+      - name: Gitleaks Job Summary
+        if: always()
+        run: |
+          if [ -s gitleaks-results.json ]; then
+            echo "### 🛑 Gitleaks detected secrets 🛑" >> $GITHUB_STEP_SUMMARY
+            echo "| Rule ID | Commit | Start Line | Author | Date | Email | File |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|--------|------------|--------|------|-------|------|" >> $GITHUB_STEP_SUMMARY
+            jq -r '.[] | 
+              "| \(.RuleID // "N/A") | \(.Commit // "N/A") | \(.StartLine // "N/A") | \(.Author // "N/A") | \(.Date // "N/A") | \(.Email // "N/A") | \(.File // "N/A") |"' gitleaks-results.json >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No secrets detected by Gitleaks." >> $GITHUB_STEP_SUMMARY
+          fi
+
+#Docker build and scanning
+# Docker Build and Scanning with Trivy
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -220,11 +130,10 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          output: results/trivy-report.json
+          output: 'trivy-report.json'
 
-      # Step 7: Upload Combined Artifact
-      - name: Upload Combined Results
+      - name: Upload Trivy Docker Scan Report
         uses: actions/upload-artifact@v4
         with:
-          name: devsecops-results
-          path: results/
+          name: trivy-docker-scan-report
+          path: trivy-report.json
