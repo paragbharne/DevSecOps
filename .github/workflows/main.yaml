@@ -113,9 +113,7 @@ jobs:
       #     fi
       - name: Run TruffleHog Secret Scan
         uses: trufflesecurity/trufflehog@v3.88.27
-        with:
-          scan: repo # Scans the entire repository
-          output: trufflehog-results.json # Output
+
 
       - name: Upload TruffleHog Report
         uses: actions/upload-artifact@v4
