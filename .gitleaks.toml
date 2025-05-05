@@ -1,9 +1,11 @@
 [[rules]]
+id = "dummy-api-key"
 description = "Dummy API Key"
 regex = '''dummy_api_key_[a-zA-Z0-9]{32}'''
 tags = ["apikey"]
 
 [[rules]]
+id = "dummy-password"
 description = "Dummy Password"
 regex = '''dummy_password_[a-zA-Z0-9]{8,}'''
 tags = ["password"]
