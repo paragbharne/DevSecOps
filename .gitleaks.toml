@@ -1,0 +1,9 @@
+[[rules]]
+description = "Dummy API Key"
+regex = '''dummy_api_key_[a-zA-Z0-9]{32}'''
+tags = ["apikey"]
+
+[[rules]]
+description = "Dummy Password"
+regex = '''dummy_password_[a-zA-Z0-9]{8,}'''
+tags = ["password"]

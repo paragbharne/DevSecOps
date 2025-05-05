@@ -85,41 +85,21 @@ jobs:
 
 # Secrets Detection in Github repos
 
-# Secrets Detection with Gitleaks
-      # - name: Run Gitleaks Secret Scan
-      #   uses: zricethezav/gitleaks-action@v1.6.0
-      #   with:
-      #     config: "" # Optional: Path to a custom Gitleaks config file
-      #     output: gitleaks-results.json
-      #     verbose: true
+#Secrets Detection with Gitleaks
+      - name: Run Gitleaks Secret Scan
+        uses: zricethezav/gitleaks-action@v1.6.0
+        with:
+          config: .gitleaks.toml # Optional: Path to a custom Gitleaks config file
+          output: gitleaks-results.json
+          verbose: true
 
-      # - name: Upload Gitleaks Report
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: gitleaks-results
-      #     path: gitleaks-results.json
-
-      # - name: Gitleaks Job Summary
-      #   if: always()
-      #   run: |
-      #     if [ -s gitleaks-results.json ]; then
-      #       echo "### 🛑 Gitleaks detected secrets 🛑" >> $GITHUB_STEP_SUMMARY
-      #       echo "| Rule ID | Commit | Start Line | Author | Date | Email | File |" >> $GITHUB_STEP_SUMMARY
-      #       echo "|---------|--------|------------|--------|------|-------|------|" >> $GITHUB_STEP_SUMMARY
-      #       jq -r '.[] | 
-      #         "| \(.RuleID // "N/A") | \(.Commit // "N/A") | \(.StartLine // "N/A") | \(.Author // "N/A") | \(.Date // "N/A") | \(.Email // "N/A") | \(.File // "N/A") |"' gitleaks-results.json >> $GITHUB_STEP_SUMMARY
-      #     else
-      #       echo "✅ No secrets detected by Gitleaks." >> $GITHUB_STEP_SUMMARY
-      #     fi
-      - name: Run TruffleHog Secret Scan
-        uses: trufflesecurity/trufflehog@v3.88.27
-
-
-      - name: Upload TruffleHog Report
+      - name: Upload Gitleaks Report
         uses: actions/upload-artifact@v4
         with:
-          name: trufflehog-results
-          path: trufflehog-results.json
+          name: gitleaks-results
+          path: gitleaks-results.json
+
+
 
 #Docker build and scanning
 # Docker Build and Scanning with Trivy
