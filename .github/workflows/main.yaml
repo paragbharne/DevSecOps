@@ -62,7 +62,7 @@ jobs:
       #   run: npm run lint # Ensure your project has a "lint" script in package.json
 
       - name: Run Linter
-        run: npx eslint . --ext .js,.jsx,.ts,.tsx --format json -o eslint-report.json || true
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx --format json -o eslint-report.json
     
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4
