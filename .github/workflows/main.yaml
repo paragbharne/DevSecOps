@@ -38,6 +38,11 @@ jobs:
           sarif_file: .github/codeql/codeql-results.sarif
           category: 'Codeql_report'
 
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Codeql_report
+          path: .github/codeql/codeql-results.sarif
 
 
 
