@@ -90,8 +90,7 @@ jobs:
       - name: Run Gitleaks Secret Scan
         uses: zricethezav/gitleaks-action@v2
         with:
-          config-path: .gitleaks.toml # Path to your custom Gitleaks config file
-          args: detect --source . --report-format json --report-path gitleaks-results.json
+          entryPoint: detect --source . --config-path .gitleaks.toml --report-format json --report-path gitleaks-results.json
 
       - name: Upload Gitleaks Report
         uses: actions/upload-artifact@v4
