@@ -1,11 +1,45 @@
-[[rules]]
-id = "dummy-api-key"
-description = "Dummy API Key"
-regex = '''dummy_api_key_[a-zA-Z0-9]{32}'''
-tags = ["apikey"]
+# Title for the Gitleaks configuration file
+title = "Custom Gitleaks Configuration for Dummy Secrets"
+
+# Extend the default Gitleaks configuration
+[extend]
+useDefault = true
+disabledRules = []
+
+# Custom rules for detecting secrets in test.txt
 
 [[rules]]
-id = "dummy-password"
-description = "Dummy Password"
-regex = '''dummy_password_[a-zA-Z0-9]{8,}'''
+id = "github-token"
+description = "GitHub Token"
+regex = '''ghp_[A-Za-z0-9]{36}'''
+tags = ["token", "github"]
+
+[[rules]]
+id = "blob-key"
+description = "Blob Storage Key"
+regex = '''[A-Za-z0-9+/]{40,}={0,2}'''
+tags = ["key", "blob"]
+
+[[rules]]
+id = "aws-access-key-id"
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["key", "aws"]
+
+[[rules]]
+id = "aws-secret-access-key"
+description = "AWS Secret Access Key"
+regex = '''[A-Za-z0-9/+=]{40}'''
+tags = ["key", "aws"]
+
+[[rules]]
+id = "password"
+description = "Generic Password"
+regex = '''password\s*=\s*[A-Za-z0-9/+=]{8,}'''
 tags = ["password"]
+
+[[rules]]
+id = "sonar-token"
+description = "SonarQube Token"
+regex = '''sq_[A-Za-z0-9]{36}'''
+tags = ["token", "sonarqube"]
