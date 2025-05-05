@@ -87,17 +87,19 @@ jobs:
 
 #Secrets Detection with Gitleaks
 # Secrets Detection with Gitleaks
-      - name: Run Gitleaks Secret Scan
-        uses: zricethezav/gitleaks-action@v2
-        with:
-          entryPoint: detect --source . --config-path .gitleaks.toml --report-format json --report-path gitleaks-results.json
+      # - name: Run Gitleaks Secret Scan
+      #   uses: zricethezav/gitleaks-action@v2
+      #   with:
+      #     entryPoint: detect --source . --config-path .gitleaks.toml --report-format json --report-path gitleaks-results.json
 
-      - name: Upload Gitleaks Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: gitleaks-results
-          path: gitleaks-results.json
-
+      # - name: Upload Gitleaks Report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: gitleaks-results
+      #     path: gitleaks-results.json
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 #Docker build and scanning
