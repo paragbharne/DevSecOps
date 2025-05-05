@@ -1,17 +1,16 @@
-export default [
-  {
-    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-      globals: {
-        browser: true,
-        node: true
-      }
-    },
-    rules: {
-      "no-unused-vars": "warn",
-      "no-console": "off"
-    }
-  }
-];
+// .eslintrc.js
+
+module.exports = {
+	env: {
+		browser: true,
+		node: true,
+	},
+	globals: {
+		myCustomGlobal: "readonly",
+	},
+	parserOptions: {
+		ecmaVersion: 2022,
+		sourceType: "module",
+	},
+	// ...other config
+};
