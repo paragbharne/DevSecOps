@@ -1,0 +1,123 @@
+name: DevSecOps Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sast:
+    name: Static Application Security Testing (SAST)
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write  # Required for CodeQL
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run SAST with CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'javascript'
+          
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          output: .github/codeql/codeql-results.sarif
+
+      - name: Upload CodeQL SARIF Results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: .github/codeql/codeql-results.sarif
+          category: 'Codeql_report'
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Codeql_report
+          path: .github/codeql/codeql-results.sarif
+
+
+
+#code-linting
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: eslint instllation
+        run: npm install eslint --save-dev
+
+      # - name: Run Linter
+      #   run: npm run lint # Ensure your project has a "lint" script in package.json
+
+      - name: Run Linter
+        run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: eslint-report.txt
+
+# Trivy for the dependecny scanning
+
+# Dependency Scanning with OSV Scanner
+      - name: Install OSV Scanner
+        run: |
+          curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
+          chmod +x /usr/local/bin/osv-scanner
+
+      - name: Run OSV Scanner
+        run: |
+          osv-scanner --lockfile=package-lock.json > osv-results.txt || true
+
+      - name: Upload OSV Scanner Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: osv-scanner-report
+          path: osv-results.txt
+
+#Docker build and scanning
+# Docker Build and Scanning with Trivy
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker Image
+        run: |
+          docker build -t nodejs-webapp:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: 'nodejs-webapp:${{ github.sha }}'
+          format: json
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+          output: 'trivy-report.json'
+
+      - name: Upload Trivy Docker Scan Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-docker-scan-report
+          path: trivy-report.json
+
+          # Secrets Detection in Github repos
+
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: .gitleaks.toml
+          exit_code: 0
