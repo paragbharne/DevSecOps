@@ -64,6 +64,16 @@ jobs:
       - name: Run Linter
         run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
 
+      - name: Run Linter
+        run: |
+          echo "Running ESLint..."
+          npm run lint || true
+
+      - name: Run Linter
+        run: |
+          npm run lint > eslint-report.txt || true
+          cat eslint-report.txt
+
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4
         with:
