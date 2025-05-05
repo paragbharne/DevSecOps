@@ -86,15 +86,15 @@ jobs:
 # Secrets Detection in Github repos
 
 #Secrets Detection with Gitleaks
+# Secrets Detection with Gitleaks
       - name: Run Gitleaks Secret Scan
-        uses: zricethezav/gitleaks-action@v1.6.0
+        uses: zricethezav/gitleaks-action@v2
         with:
-          config: .gitleaks.toml # Optional: Path to a custom Gitleaks config file
-          output: gitleaks-results.json
-          verbose: true
+          config-path: .gitleaks.toml # Path to your custom Gitleaks config file
+          args: detect --source . --report-format json --report-path gitleaks-results.json
 
       - name: Upload Gitleaks Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: gitleaks-results
           path: gitleaks-results.json
