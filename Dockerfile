@@ -1,20 +1,13 @@
-# Use the official Node.js image as the base image
-FROM node:16-alpine
+# FROM node:6-stretch
+FROM node:18.13.0
 
-# Set the working directory inside the container
-WORKDIR /app
+RUN mkdir /usr/src/goof
+RUN mkdir /tmp/extracted_files
+COPY . /usr/src/goof
+WORKDIR /usr/src/goof
 
-# Copy package.json and package-lock.json to the working directory
-COPY package.json ./
-
-# Install dependencies
+RUN npm update
 RUN npm install
-
-# Copy the rest of the application code to the working directory
-COPY . .
-
-# Expose the port your app runs on (default for Node.js apps is 3000)
-EXPOSE 3000
-
-# Define the command to run the application
-CMD ["node", "server.js"]
+EXPOSE 3001
+EXPOSE 9229
+ENTRYPOINT ["npm", "start"]
