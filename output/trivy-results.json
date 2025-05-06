@@ -1,0 +1,1668 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2025-05-06T16:07:32.93836672Z",
+  "ArtifactName": ".",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-27789",
+          "PkgID": "@babel/helpers@7.22.6",
+          "PkgName": "@babel/helpers",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/%40babel/helpers@7.22.6",
+            "UID": "cd54d864fb301257"
+          },
+          "InstalledVersion": "7.22.6",
+          "FixedVersion": "7.26.10, 8.0.0-alpha.17",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-27789",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Babel is a compiler for writing next generation JavaScript. When using ...",
+          "Description": "Babel is a compiler for writing next generation JavaScript. When using versions of Babel prior to 7.26.10 and 8.0.0-alpha.17 to compile regular expression named capturing groups, Babel will generate a polyfill for the `.replace` method that has quadratic complexity on some specific replacement pattern strings (i.e. the second argument passed to `.replace`). Generated code is vulnerable if all the following conditions are true: Using Babel to compile regular expression named capturing groups, using the `.replace` method on a regular expression that contains named capturing groups, and the code using untrusted strings as the second argument of `.replace`. This problem has been fixed in `@babel/helpers` and `@babel/runtime` 7.26.10 and 8.0.0-alpha.17. It's likely that individual users do not directly depend on `@babel/helpers`, and instead depend on `@babel/core` (which itself depends on `@babel/helpers`). Upgrading to `@babel/core` 7.26.10 is not required, but it guarantees use of a new enough `@babel/helpers` version. Note that just updating Babel dependencies is not enough; one will also need to re-compile the code. No known workarounds are available.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 6.2
+            }
+          },
+          "References": [
+            "https://github.com/babel/babel",
+            "https://github.com/babel/babel/commit/d5952e80c0faa5ec20e35085531b6e572d31dad4",
+            "https://github.com/babel/babel/pull/17173",
+            "https://github.com/babel/babel/security/advisories/GHSA-968p-4wvh-cqc8",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-27789"
+          ],
+          "PublishedDate": "2025-03-11T20:15:18.33Z",
+          "LastModifiedDate": "2025-03-11T20:15:18.33Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-27789",
+          "PkgID": "@babel/runtime@7.22.6",
+          "PkgName": "@babel/runtime",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/%40babel/runtime@7.22.6",
+            "UID": "a4b3e189df98d66a"
+          },
+          "InstalledVersion": "7.22.6",
+          "FixedVersion": "7.26.10, 8.0.0-alpha.17",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-27789",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Babel is a compiler for writing next generation JavaScript. When using ...",
+          "Description": "Babel is a compiler for writing next generation JavaScript. When using versions of Babel prior to 7.26.10 and 8.0.0-alpha.17 to compile regular expression named capturing groups, Babel will generate a polyfill for the `.replace` method that has quadratic complexity on some specific replacement pattern strings (i.e. the second argument passed to `.replace`). Generated code is vulnerable if all the following conditions are true: Using Babel to compile regular expression named capturing groups, using the `.replace` method on a regular expression that contains named capturing groups, and the code using untrusted strings as the second argument of `.replace`. This problem has been fixed in `@babel/helpers` and `@babel/runtime` 7.26.10 and 8.0.0-alpha.17. It's likely that individual users do not directly depend on `@babel/helpers`, and instead depend on `@babel/core` (which itself depends on `@babel/helpers`). Upgrading to `@babel/core` 7.26.10 is not required, but it guarantees use of a new enough `@babel/helpers` version. Note that just updating Babel dependencies is not enough; one will also need to re-compile the code. No known workarounds are available.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 6.2
+            }
+          },
+          "References": [
+            "https://github.com/babel/babel",
+            "https://github.com/babel/babel/commit/d5952e80c0faa5ec20e35085531b6e572d31dad4",
+            "https://github.com/babel/babel/pull/17173",
+            "https://github.com/babel/babel/security/advisories/GHSA-968p-4wvh-cqc8",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-27789"
+          ],
+          "PublishedDate": "2025-03-11T20:15:18.33Z",
+          "LastModifiedDate": "2025-03-11T20:15:18.33Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-45133",
+          "PkgID": "@babel/traverse@7.22.8",
+          "PkgName": "@babel/traverse",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/%40babel/traverse@7.22.8",
+            "UID": "5bf4f3a9b9d9bd1c"
+          },
+          "InstalledVersion": "7.22.8",
+          "FixedVersion": "7.23.2, 8.0.0-alpha.4",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-45133",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "babel: arbitrary code execution",
+          "Description": "Babel is a compiler for writingJavaScript. In `@babel/traverse` prior to versions 7.23.2 and 8.0.0-alpha.4 and all versions of `babel-traverse`, using Babel to compile code that was specifically crafted by an attacker can lead to arbitrary code execution during compilation, when using plugins that rely on the `path.evaluate()`or `path.evaluateTruthy()` internal Babel methods. Known affected plugins are `@babel/plugin-transform-runtime`; `@babel/preset-env` when using its `useBuiltIns` option; and any \"polyfill provider\" plugin that depends on `@babel/helper-define-polyfill-provider`, such as `babel-plugin-polyfill-corejs3`, `babel-plugin-polyfill-corejs2`, `babel-plugin-polyfill-es-shims`, `babel-plugin-polyfill-regenerator`. No other plugins under the `@babel/` namespace are impacted, but third-party plugins might be. Users that only compile trusted code are not impacted. The vulnerability has been fixed in `@babel/traverse@7.23.2` and `@babel/traverse@8.0.0-alpha.4`. Those who cannot upgrade `@babel/traverse` and are using one of the affected packages mentioned above should upgrade them to their latest version to avoid triggering the vulnerable code path in affected `@babel/traverse` versions: `@babel/plugin-transform-runtime` v7.23.2, `@babel/preset-env` v7.23.2, `@babel/helper-define-polyfill-provider` v0.4.3, `babel-plugin-polyfill-corejs2` v0.4.6, `babel-plugin-polyfill-corejs3` v0.8.5, `babel-plugin-polyfill-es-shims` v0.10.0, `babel-plugin-polyfill-regenerator` v0.5.3.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-184",
+            "CWE-697"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "nvd": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "V3Score": 9.4
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+              "V3Score": 8.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+              "V3Score": 8.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-45133",
+            "https://babeljs.io/blog/2023/10/16/cve-2023-45133",
+            "https://github.com/babel/babel",
+            "https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82",
+            "https://github.com/babel/babel/pull/16033",
+            "https://github.com/babel/babel/releases/tag/v7.23.2",
+            "https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4",
+            "https://github.com/babel/babel/security/advisories/GHSA-67hx-6x53-jw92",
+            "https://lists.debian.org/debian-lts-announce/2023/10/msg00026.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-45133",
+            "https://www.cve.org/CVERecord?id=CVE-2023-45133",
+            "https://www.debian.org/security/2023/dsa-5528"
+          ],
+          "PublishedDate": "2023-10-12T17:15:09.797Z",
+          "LastModifiedDate": "2024-11-21T08:26:24.603Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-45590",
+          "PkgID": "body-parser@1.20.1",
+          "PkgName": "body-parser",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/body-parser@1.20.1",
+            "UID": "a70c7d2c9545519c"
+          },
+          "InstalledVersion": "1.20.1",
+          "FixedVersion": "1.20.3",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-45590",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "body-parser: Denial of Service Vulnerability in body-parser",
+          "Description": "body-parser is Node.js body parsing middleware. body-parser \u003c1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service. This issue is patched in 1.20.3.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-405"
+          ],
+          "VendorSeverity": {
+            "azure": 3,
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-45590",
+            "https://github.com/expressjs/body-parser",
+            "https://github.com/expressjs/body-parser/commit/b2695c4450f06ba3b0ccf48d872a229bb41c9bce",
+            "https://github.com/expressjs/body-parser/security/advisories/GHSA-qwcr-r2fm-qrc7",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-45590",
+            "https://www.cve.org/CVERecord?id=CVE-2024-45590"
+          ],
+          "PublishedDate": "2024-09-10T16:15:21.083Z",
+          "LastModifiedDate": "2024-09-20T16:26:44.977Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-4068",
+          "PkgID": "braces@3.0.2",
+          "PkgName": "braces",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/braces@3.0.2",
+            "UID": "dffd063e71963c63"
+          },
+          "InstalledVersion": "3.0.2",
+          "FixedVersion": "3.0.3",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-4068",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "braces: fails to limit the number of characters it can handle",
+          "Description": "The NPM package `braces`, versions prior to 3.0.3, fails to limit the number of characters it can handle, which could lead to Memory Exhaustion. In `lib/parse.js,` if a malicious user sends \"imbalanced braces\" as input, the parsing will enter a loop, which will cause the program to start allocating heap memory without freeing it at any moment of the loop. Eventually, the JavaScript heap limit is reached, and the program will crash.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1050",
+            "CWE-400"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-4068",
+            "https://devhub.checkmarx.com/cve-details/CVE-2024-4068",
+            "https://devhub.checkmarx.com/cve-details/CVE-2024-4068/",
+            "https://github.com/micromatch/braces",
+            "https://github.com/micromatch/braces/blob/98414f9f1fabe021736e26836d8306d5de747e0d/lib/parse.js#L308",
+            "https://github.com/micromatch/braces/commit/415d660c3002d1ab7e63dbf490c9851da80596ff",
+            "https://github.com/micromatch/braces/issues/35",
+            "https://github.com/micromatch/braces/pull/37",
+            "https://github.com/micromatch/braces/pull/40",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-4068",
+            "https://www.cve.org/CVERecord?id=CVE-2024-4068"
+          ],
+          "PublishedDate": "2024-05-14T15:42:48.66Z",
+          "LastModifiedDate": "2024-11-21T09:42:07.71Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-47764",
+          "PkgID": "cookie@0.5.0",
+          "PkgName": "cookie",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/cookie@0.5.0",
+            "UID": "eb89f0148b613fdc"
+          },
+          "InstalledVersion": "0.5.0",
+          "FixedVersion": "0.7.0",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-47764",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "cookie: cookie accepts cookie name, path, and domain with out of bounds characters",
+          "Description": "cookie is a basic HTTP cookie parser and serializer for HTTP servers. The cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. A similar escape can be used for path and domain, which could be abused to alter other fields of the cookie. Upgrade to 0.7.0, which updates the validation for name, path, and domain.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-74"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 2,
+            "ghsa": 1,
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-47764",
+            "https://github.com/jshttp/cookie",
+            "https://github.com/jshttp/cookie/commit/e10042845354fea83bd8f34af72475eed1dadf5c",
+            "https://github.com/jshttp/cookie/pull/167",
+            "https://github.com/jshttp/cookie/security/advisories/GHSA-pxg6-pf52-xh8x",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-47764",
+            "https://www.cve.org/CVERecord?id=CVE-2024-47764"
+          ],
+          "PublishedDate": "2024-10-04T20:15:07.31Z",
+          "LastModifiedDate": "2024-10-07T17:48:28.117Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-33883",
+          "PkgID": "ejs@3.1.9",
+          "PkgName": "ejs",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ejs@3.1.9",
+            "UID": "defdd7b572aa287c"
+          },
+          "InstalledVersion": "3.1.9",
+          "FixedVersion": "3.1.10",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-33883",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "The ejs (aka Embedded JavaScript templates) package before 3.1.10 for  ...",
+          "Description": "The ejs (aka Embedded JavaScript templates) package before 3.1.10 for Node.js lacks certain pollution protection.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-693"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 4
+            }
+          },
+          "References": [
+            "https://github.com/mde/ejs",
+            "https://github.com/mde/ejs/commit/e469741dca7df2eb400199e1cdb74621e3f89aa5",
+            "https://github.com/mde/ejs/commit/e469741dca7df2eb400199e1cdb74621e3f89aa5 (v3.1.10)",
+            "https://github.com/mde/ejs/compare/v3.1.9...v3.1.10",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-33883",
+            "https://security.netapp.com/advisory/ntap-20240605-0003",
+            "https://security.netapp.com/advisory/ntap-20240605-0003/",
+            "https://www.cve.org/CVERecord?id=CVE-2024-33883"
+          ],
+          "PublishedDate": "2024-04-28T16:15:23.233Z",
+          "LastModifiedDate": "2024-11-21T09:17:40.303Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-29041",
+          "PkgID": "express@4.18.2",
+          "PkgName": "express",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/express@4.18.2",
+            "UID": "20239bdddc972adf"
+          },
+          "InstalledVersion": "4.18.2",
+          "FixedVersion": "4.19.2, 5.0.0-beta.3",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-29041",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "express: cause malformed URLs to be evaluated",
+          "Description": "Express.js minimalist web framework for node. Versions of Express.js prior to 4.19.0 and all pre-release alpha and beta versions of 5.0 are affected by an open redirect vulnerability using malformed URLs. When a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https://github.com/pillarjs/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list. The main method impacted is `res.location()` but this is also called from within `res.redirect()`. The vulnerability is fixed in 4.19.2 and 5.0.0-beta.3.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-601",
+            "CWE-1286"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 2,
+            "ghsa": 2,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-29041",
+            "https://expressjs.com/en/4x/api.html#res.location",
+            "https://github.com/expressjs/express",
+            "https://github.com/expressjs/express/commit/0867302ddbde0e9463d0564fea5861feb708c2dd",
+            "https://github.com/expressjs/express/commit/0b746953c4bd8e377123527db11f9cd866e39f94",
+            "https://github.com/expressjs/express/pull/5539",
+            "https://github.com/expressjs/express/security/advisories/GHSA-rv95-896h-c2vc",
+            "https://github.com/koajs/koa/issues/1800",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-29041",
+            "https://www.cve.org/CVERecord?id=CVE-2024-29041"
+          ],
+          "PublishedDate": "2024-03-25T21:15:46.847Z",
+          "LastModifiedDate": "2024-11-21T09:07:26.023Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-43796",
+          "PkgID": "express@4.18.2",
+          "PkgName": "express",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/express@4.18.2",
+            "UID": "20239bdddc972adf"
+          },
+          "InstalledVersion": "4.18.2",
+          "FixedVersion": "4.20.0, 5.0.0",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-43796",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "express: Improper Input Handling in Express Redirects",
+          "Description": "Express.js minimalist web framework for node. In express \u003c 4.20.0, passing untrusted user input - even after sanitizing it - to response.redirect() may execute untrusted code. This issue is patched in express 4.20.0.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-79"
+          ],
+          "VendorSeverity": {
+            "azure": 2,
+            "cbl-mariner": 2,
+            "ghsa": 1,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+              "V3Score": 5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 4.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+              "V3Score": 5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-43796",
+            "https://github.com/expressjs/express",
+            "https://github.com/expressjs/express/commit/54271f69b511fea198471e6ff3400ab805d6b553",
+            "https://github.com/expressjs/express/security/advisories/GHSA-qw6h-vgh9-j6wx",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-43796",
+            "https://www.cve.org/CVERecord?id=CVE-2024-43796"
+          ],
+          "PublishedDate": "2024-09-10T15:15:17.51Z",
+          "LastModifiedDate": "2024-09-20T16:07:47.997Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-26159",
+          "PkgID": "follow-redirects@1.15.2",
+          "PkgName": "follow-redirects",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/follow-redirects@1.15.2",
+            "UID": "2003499aa43387ec"
+          },
+          "InstalledVersion": "1.15.2",
+          "FixedVersion": "1.15.4",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-26159",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "follow-redirects: Improper Input Validation due to the improper handling of URLs by the url.parse()",
+          "Description": "Versions of the package follow-redirects before 1.15.4 are vulnerable to Improper Input Validation due to the improper handling of URLs by the url.parse() function. When new URL() throws an error, it can be manipulated to misinterpret the hostname. An attacker could exploit this weakness to redirect traffic to a malicious site, potentially leading to information disclosure, phishing attacks, or other security breaches.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-20",
+            "CWE-601"
+          ],
+          "VendorSeverity": {
+            "azure": 2,
+            "cbl-mariner": 2,
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-26159",
+            "https://github.com/follow-redirects/follow-redirects",
+            "https://github.com/follow-redirects/follow-redirects/commit/7a6567e16dfa9ad18a70bfe91784c28653fbf19d",
+            "https://github.com/follow-redirects/follow-redirects/issues/235",
+            "https://github.com/follow-redirects/follow-redirects/pull/236",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ZZ425BFKNBQ6AK7I5SAM56TWON5OF2XM",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ZZ425BFKNBQ6AK7I5SAM56TWON5OF2XM/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-26159",
+            "https://security.snyk.io/vuln/SNYK-JS-FOLLOWREDIRECTS-6141137",
+            "https://www.cve.org/CVERecord?id=CVE-2023-26159"
+          ],
+          "PublishedDate": "2024-01-02T05:15:08.63Z",
+          "LastModifiedDate": "2024-11-21T07:50:54.353Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-28849",
+          "PkgID": "follow-redirects@1.15.2",
+          "PkgName": "follow-redirects",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/follow-redirects@1.15.2",
+            "UID": "2003499aa43387ec"
+          },
+          "InstalledVersion": "1.15.2",
+          "FixedVersion": "1.15.6",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-28849",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "follow-redirects: Possible credential leak",
+          "Description": "follow-redirects is an open source, drop-in replacement for Node's `http` and `https` modules that automatically follows redirects. In affected versions follow-redirects only clears authorization header during cross-domain redirect, but keep the proxy-authentication header which contains credentials too. This vulnerability may lead to credentials leak, but has been addressed in version 1.15.6. Users are advised to upgrade. There are no known workarounds for this vulnerability.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-200"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 2,
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 6.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-28849",
+            "https://fetch.spec.whatwg.org/#authentication-entries",
+            "https://github.com/follow-redirects/follow-redirects",
+            "https://github.com/follow-redirects/follow-redirects/commit/c4f847f85176991f95ab9c88af63b1294de8649b",
+            "https://github.com/follow-redirects/follow-redirects/security/advisories/GHSA-cxjh-pqwp-8mfp",
+            "https://github.com/psf/requests/issues/1885",
+            "https://hackerone.com/reports/2390009",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOIF4EPQUCKDBEVTGRQDZ3CGTYQHPO7Z",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VOIF4EPQUCKDBEVTGRQDZ3CGTYQHPO7Z/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-28849",
+            "https://www.cve.org/CVERecord?id=CVE-2024-28849"
+          ],
+          "PublishedDate": "2024-03-14T17:15:52.097Z",
+          "LastModifiedDate": "2024-11-21T09:07:02.53Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-21536",
+          "PkgID": "http-proxy-middleware@2.0.6",
+          "PkgName": "http-proxy-middleware",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/http-proxy-middleware@2.0.6",
+            "UID": "ac950bc779ee436b"
+          },
+          "InstalledVersion": "2.0.6",
+          "FixedVersion": "2.0.7, 3.0.3",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-21536",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "http-proxy-middleware: Denial of Service",
+          "Description": "Versions of the package http-proxy-middleware before 2.0.7, from 3.0.0 and before 3.0.3 are vulnerable to Denial of Service (DoS) due to an UnhandledPromiseRejection error thrown by micromatch. An attacker could kill the Node.js process and crash the server by making requests to certain paths.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-21536",
+            "https://gist.github.com/mhassan1/28be67266d82a53708ed59ce5dc3c94a",
+            "https://github.com/chimurai/http-proxy-middleware",
+            "https://github.com/chimurai/http-proxy-middleware/commit/0b4274e8cc9e9a2c5a06f35fbf456ccfcebc55a5",
+            "https://github.com/chimurai/http-proxy-middleware/commit/788b21e4aff38332d6319557d4a5b1b13b1f9a22",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-21536",
+            "https://security.snyk.io/vuln/SNYK-JS-HTTPPROXYMIDDLEWARE-8229906",
+            "https://www.cve.org/CVERecord?id=CVE-2024-21536"
+          ],
+          "PublishedDate": "2024-10-19T05:15:13.097Z",
+          "LastModifiedDate": "2024-11-01T18:03:15.897Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-32996",
+          "PkgID": "http-proxy-middleware@2.0.6",
+          "PkgName": "http-proxy-middleware",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/http-proxy-middleware@2.0.6",
+            "UID": "ac950bc779ee436b"
+          },
+          "InstalledVersion": "2.0.6",
+          "FixedVersion": "2.0.8, 3.0.4",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-32996",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "http-proxy-middleware: Always-Incorrect Control Flow Implementation in http-proxy-middleware",
+          "Description": "In http-proxy-middleware before 2.0.8 and 3.x before 3.0.4, writeBody can be called twice because \"else if\" is not used.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-670"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:L",
+              "V3Score": 4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:L",
+              "V3Score": 4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-32996",
+            "https://github.com/chimurai/http-proxy-middleware",
+            "https://github.com/chimurai/http-proxy-middleware/commit/020976044d113fc0bcbbaf995e91d05e2829a145",
+            "https://github.com/chimurai/http-proxy-middleware/pull/1089",
+            "https://github.com/chimurai/http-proxy-middleware/releases/tag/v2.0.8",
+            "https://github.com/chimurai/http-proxy-middleware/releases/tag/v3.0.4",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-32996",
+            "https://www.cve.org/CVERecord?id=CVE-2025-32996"
+          ],
+          "PublishedDate": "2025-04-15T03:15:18.21Z",
+          "LastModifiedDate": "2025-04-15T18:39:27.967Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-32997",
+          "PkgID": "http-proxy-middleware@2.0.6",
+          "PkgName": "http-proxy-middleware",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/http-proxy-middleware@2.0.6",
+            "UID": "ac950bc779ee436b"
+          },
+          "InstalledVersion": "2.0.6",
+          "FixedVersion": "2.0.9, 3.0.5",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-32997",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "http-proxy-middleware: Improper Check for Unusual or Exceptional Conditions in http-proxy-middleware",
+          "Description": "In http-proxy-middleware before 2.0.9 and 3.x before 3.0.5, fixRequestBody proceeds even if bodyParser has failed.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-754"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N",
+              "V3Score": 4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N",
+              "V3Score": 4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-32997",
+            "https://github.com/chimurai/http-proxy-middleware",
+            "https://github.com/chimurai/http-proxy-middleware/commit/1bdccbeec243850f1d2bb50ea0ff2151e725d67e",
+            "https://github.com/chimurai/http-proxy-middleware/pull/1096",
+            "https://github.com/chimurai/http-proxy-middleware/releases/tag/v2.0.9",
+            "https://github.com/chimurai/http-proxy-middleware/releases/tag/v3.0.5",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-32997",
+            "https://www.cve.org/CVERecord?id=CVE-2025-32997"
+          ],
+          "PublishedDate": "2025-04-15T03:15:18.363Z",
+          "LastModifiedDate": "2025-04-15T18:39:27.967Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-4067",
+          "PkgID": "micromatch@4.0.5",
+          "PkgName": "micromatch",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/micromatch@4.0.5",
+            "UID": "ab261789efb58040"
+          },
+          "InstalledVersion": "4.0.5",
+          "FixedVersion": "4.0.8",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-4067",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "micromatch: vulnerable to Regular Expression Denial of Service",
+          "Description": "The NPM package `micromatch` prior to 4.0.8 is vulnerable to Regular Expression Denial of Service (ReDoS). The vulnerability occurs in `micromatch.braces()` in `index.js` because the pattern `.*` will greedily match anything. By passing a malicious payload, the pattern matching will keep backtracking to the input while it doesn't find the closing bracket. As the input size increases, the consumption time will also increase until it causes the application to hang or slow down. There was a merged fix but further testing shows the issue persists. This issue should be mitigated by using a safe pattern that won't start backtracking the regular expression due to greedy matching. This issue was fixed in version 4.0.8.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-4067",
+            "https://advisory.checkmarx.net/advisory/CVE-2024-4067",
+            "https://advisory.checkmarx.net/advisory/CVE-2024-4067/",
+            "https://devhub.checkmarx.com/cve-details/CVE-2024-4067",
+            "https://devhub.checkmarx.com/cve-details/CVE-2024-4067/",
+            "https://github.com/micromatch/micromatch",
+            "https://github.com/micromatch/micromatch/blob/2c56a8604b68c1099e7bc0f807ce0865a339747a/index.js#L448",
+            "https://github.com/micromatch/micromatch/commit/03aa8052171e878897eee5d7bb2ae0ae83ec2ade",
+            "https://github.com/micromatch/micromatch/commit/500d5d6f42f0e8dfa1cb5464c6cb420b1b6aaaa0",
+            "https://github.com/micromatch/micromatch/issues/243",
+            "https://github.com/micromatch/micromatch/pull/247",
+            "https://github.com/micromatch/micromatch/pull/266",
+            "https://github.com/micromatch/micromatch/releases/tag/4.0.8",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-4067",
+            "https://www.cve.org/CVERecord?id=CVE-2024-4067"
+          ],
+          "PublishedDate": "2024-05-14T15:42:47.947Z",
+          "LastModifiedDate": "2024-11-21T09:42:07.587Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-55565",
+          "PkgID": "nanoid@3.3.6",
+          "PkgName": "nanoid",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/nanoid@3.3.6",
+            "UID": "815823f2eddefd50"
+          },
+          "InstalledVersion": "3.3.6",
+          "FixedVersion": "5.0.9, 3.3.8",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-55565",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "nanoid: nanoid mishandles non-integer values",
+          "Description": "nanoid (aka Nano ID) before 5.0.9 mishandles non-integer values. 3.3.8 is also a fixed version.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-835"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 4.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-55565",
+            "https://github.com/ai/nanoid",
+            "https://github.com/ai/nanoid/compare/3.3.7...3.3.8",
+            "https://github.com/ai/nanoid/pull/510",
+            "https://github.com/ai/nanoid/releases/tag/5.0.9",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-55565",
+            "https://www.cve.org/CVERecord?id=CVE-2024-55565"
+          ],
+          "PublishedDate": "2024-12-09T02:15:19.607Z",
+          "LastModifiedDate": "2024-12-12T19:15:13.67Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2021-3803",
+          "PkgID": "nth-check@1.0.2",
+          "PkgName": "nth-check",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/nth-check@1.0.2",
+            "UID": "b4c90c3df4328aad"
+          },
+          "InstalledVersion": "1.0.2",
+          "FixedVersion": "2.0.1",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-3803",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "nodejs-nth-check: inefficient regular expression complexity",
+          "Description": "nth-check is vulnerable to Inefficient Regular Expression Complexity",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:L/Au:N/C:N/I:N/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V2Score": 5,
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2021-3803",
+            "https://github.com/advisories/GHSA-rp65-9cf3-cjxr",
+            "https://github.com/fb55/nth-check",
+            "https://github.com/fb55/nth-check/commit/9894c1d2010870c351f66c6f6efcf656e26bb726",
+            "https://github.com/fb55/nth-check/commit/9894c1d2010870c351f66c6f6efcf656e26bb726 (v2.0.1)",
+            "https://huntr.dev/bounties/8cf8cc06-d2cf-4b4e-b42c-99fafb0b04d0",
+            "https://huntr.dev/bounties/8cf8cc06-d2cf-4b4e-b42c-99fafb0b04d0/",
+            "https://lists.debian.org/debian-lts-announce/2023/05/msg00023.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-3803",
+            "https://ubuntu.com/security/notices/USN-6114-1",
+            "https://www.cve.org/CVERecord?id=CVE-2021-3803"
+          ],
+          "PublishedDate": "2021-09-17T07:15:09.153Z",
+          "LastModifiedDate": "2024-11-21T06:22:28.873Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-45296",
+          "PkgID": "path-to-regexp@0.1.7",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.7",
+            "UID": "a38f5680b6290b72"
+          },
+          "InstalledVersion": "0.1.7",
+          "FixedVersion": "1.9.0, 0.1.10, 8.0.0, 3.3.0, 6.3.0",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-45296",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "path-to-regexp: Backtracking regular expressions cause ReDoS",
+          "Description": "path-to-regexp turns path strings into a regular expressions. In certain cases, path-to-regexp will output a regular expression that can be exploited to cause poor performance. Because JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and lead to a DoS. The bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (.). For users of 0.1, upgrade to 0.1.10. All other users should upgrade to 8.0.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-45296",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/commit/29b96b4a1de52824e1ca0f49a701183cc4ed476f",
+            "https://github.com/pillarjs/path-to-regexp/commit/60f2121e9b66b7b622cc01080df0aabda9eedee6",
+            "https://github.com/pillarjs/path-to-regexp/commit/925ac8e3c5780b02f58cbd4e52f95da8ad2ac485",
+            "https://github.com/pillarjs/path-to-regexp/commit/d31670ae8f6e69cbfd56e835742195b7d10942ef",
+            "https://github.com/pillarjs/path-to-regexp/commit/f1253b47b347dcb909e3e80b0eb2649109e59894",
+            "https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-9wv6-86v2-598j",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-45296",
+            "https://security.netapp.com/advisory/ntap-20250124-0001",
+            "https://security.netapp.com/advisory/ntap-20250124-0001/",
+            "https://www.cve.org/CVERecord?id=CVE-2024-45296"
+          ],
+          "PublishedDate": "2024-09-09T19:15:13.33Z",
+          "LastModifiedDate": "2025-01-24T20:15:32.68Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-52798",
+          "PkgID": "path-to-regexp@0.1.7",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.7",
+            "UID": "a38f5680b6290b72"
+          },
+          "InstalledVersion": "0.1.7",
+          "FixedVersion": "0.1.12",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-52798",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "path-to-regexp: path-to-regexp Unpatched `path-to-regexp` ReDoS in 0.1.x",
+          "Description": "path-to-regexp turns path strings into a regular expressions. In certain cases, path-to-regexp will output a regular expression that can be exploited to cause poor performance. The regular expression that is vulnerable to backtracking can be generated in the 0.1.x release of path-to-regexp. Upgrade to 0.1.12. This vulnerability exists because of an incomplete fix for CVE-2024-45296.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 2,
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-52798",
+            "https://blakeembrey.com/posts/2024-09-web-redos",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/commit/f01c26a013b1889f0c217c643964513acf17f6a4",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-rhx6-c78j-4q9w",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-52798",
+            "https://security.netapp.com/advisory/ntap-20250124-0002",
+            "https://security.netapp.com/advisory/ntap-20250124-0002/",
+            "https://www.cve.org/CVERecord?id=CVE-2024-52798"
+          ],
+          "PublishedDate": "2024-12-05T23:15:06.31Z",
+          "LastModifiedDate": "2025-01-24T20:15:33.107Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-44270",
+          "PkgID": "postcss@7.0.39",
+          "PkgName": "postcss",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/postcss@7.0.39",
+            "UID": "8256b3e9db9ee91d"
+          },
+          "InstalledVersion": "7.0.39",
+          "FixedVersion": "8.4.31",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-44270",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "PostCSS: Improper input validation in PostCSS",
+          "Description": "An issue was discovered in PostCSS before 8.4.31. The vulnerability affects linters using PostCSS to parse external untrusted CSS. An attacker can prepare CSS in such a way that it will contains parts parsed by PostCSS as a CSS comment. After processing by PostCSS, it will be included in the PostCSS output in CSS nodes (rules, properties) despite being included in a comment.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-74"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-44270",
+            "https://github.com/github/advisory-database/issues/2820",
+            "https://github.com/postcss/postcss",
+            "https://github.com/postcss/postcss/blob/main/lib/tokenize.js#L25",
+            "https://github.com/postcss/postcss/commit/58cc860b4c1707510c9cd1bc1fa30b423a9ad6c5",
+            "https://github.com/postcss/postcss/releases/tag/8.4.31",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-44270",
+            "https://www.cve.org/CVERecord?id=CVE-2023-44270"
+          ],
+          "PublishedDate": "2023-09-29T22:15:11.867Z",
+          "LastModifiedDate": "2024-11-21T08:25:33.443Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-44270",
+          "PkgID": "postcss@8.4.27",
+          "PkgName": "postcss",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/postcss@8.4.27",
+            "UID": "f4091567982af640"
+          },
+          "InstalledVersion": "8.4.27",
+          "FixedVersion": "8.4.31",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-44270",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "PostCSS: Improper input validation in PostCSS",
+          "Description": "An issue was discovered in PostCSS before 8.4.31. The vulnerability affects linters using PostCSS to parse external untrusted CSS. An attacker can prepare CSS in such a way that it will contains parts parsed by PostCSS as a CSS comment. After processing by PostCSS, it will be included in the PostCSS output in CSS nodes (rules, properties) despite being included in a comment.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-74"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-44270",
+            "https://github.com/github/advisory-database/issues/2820",
+            "https://github.com/postcss/postcss",
+            "https://github.com/postcss/postcss/blob/main/lib/tokenize.js#L25",
+            "https://github.com/postcss/postcss/commit/58cc860b4c1707510c9cd1bc1fa30b423a9ad6c5",
+            "https://github.com/postcss/postcss/releases/tag/8.4.31",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-44270",
+            "https://www.cve.org/CVERecord?id=CVE-2023-44270"
+          ],
+          "PublishedDate": "2023-09-29T22:15:11.867Z",
+          "LastModifiedDate": "2024-11-21T08:25:33.443Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-47068",
+          "PkgID": "rollup@2.79.1",
+          "PkgName": "rollup",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/rollup@2.79.1",
+            "UID": "726f1887d47dac40"
+          },
+          "InstalledVersion": "2.79.1",
+          "FixedVersion": "3.29.5, 4.22.4, 2.79.2",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-47068",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "rollup: DOM Clobbering Gadget found in rollup bundled scripts that leads to XSS",
+          "Description": "Rollup is a module bundler for JavaScript. Versions prior to 2.79.2, 3.29.5, and 4.22.4 are susceptible to a DOM Clobbering vulnerability when bundling scripts with properties from `import.meta` (e.g., `import.meta.url`) in `cjs`/`umd`/`iife` format. The DOM Clobbering gadget can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present. Versions 2.79.2, 3.29.5, and 4.22.4  contain a patch for the vulnerability.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-79"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:H",
+              "V3Score": 6.4
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:H",
+              "V3Score": 6.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-47068",
+            "https://github.com/rollup/rollup",
+            "https://github.com/rollup/rollup/blob/b86ffd776cfa906573d36c3f019316d02445d9ef/src/ast/nodes/MetaProperty.ts#L157-L162",
+            "https://github.com/rollup/rollup/blob/b86ffd776cfa906573d36c3f019316d02445d9ef/src/ast/nodes/MetaProperty.ts#L180-L185",
+            "https://github.com/rollup/rollup/commit/2ef77c00ec2635d42697cff2c0567ccc8db34fb4",
+            "https://github.com/rollup/rollup/commit/e2552c9e955e0a61f70f508200ee9f752f85a541",
+            "https://github.com/rollup/rollup/security/advisories/GHSA-gcx4-mw62-g8wm",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-47068",
+            "https://www.cve.org/CVERecord?id=CVE-2024-47068"
+          ],
+          "PublishedDate": "2024-09-23T16:15:06.947Z",
+          "LastModifiedDate": "2024-10-29T16:15:05.583Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-43799",
+          "PkgID": "send@0.18.0",
+          "PkgName": "send",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/send@0.18.0",
+            "UID": "6c4cfbf6939752d7"
+          },
+          "InstalledVersion": "0.18.0",
+          "FixedVersion": "0.19.0",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-43799",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "send: Code Execution Vulnerability in Send Library",
+          "Description": "Send is a library for streaming files from the file system as a http response. Send passes untrusted user input to SendStream.redirect() which executes untrusted code. This issue is patched in send 0.19.0.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-79"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 2,
+            "ghsa": 1,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+              "V3Score": 5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 4.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+              "V3Score": 5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-43799",
+            "https://github.com/pillarjs/send",
+            "https://github.com/pillarjs/send/commit/ae4f2989491b392ae2ef3b0015a019770ae65d35",
+            "https://github.com/pillarjs/send/security/advisories/GHSA-m6fv-jmcg-4jfg",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-43799",
+            "https://www.cve.org/CVERecord?id=CVE-2024-43799"
+          ],
+          "PublishedDate": "2024-09-10T15:15:17.727Z",
+          "LastModifiedDate": "2024-09-20T16:57:14.687Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-11831",
+          "PkgID": "serialize-javascript@6.0.1",
+          "PkgName": "serialize-javascript",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/serialize-javascript@6.0.1",
+            "UID": "7d429a7488b6c31d"
+          },
+          "InstalledVersion": "6.0.1",
+          "FixedVersion": "6.0.2",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-11831",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "npm-serialize-javascript: Cross-site Scripting (XSS) in serialize-javascript",
+          "Description": "A flaw was found in npm-serialize-javascript. The vulnerability occurs because the serialize-javascript module does not properly sanitize certain inputs, such as regex or other JavaScript object types, allowing an attacker to inject malicious code. This code could be executed when deserialized by a web browser, causing Cross-site scripting (XSS) attacks. This issue is critical in environments where serialized data is sent to web clients, potentially compromising the security of the website or web application using this package.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-79"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 5.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 5.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHBA-2025:0304",
+            "https://access.redhat.com/errata/RHSA-2025:1334",
+            "https://access.redhat.com/errata/RHSA-2025:1468",
+            "https://access.redhat.com/errata/RHSA-2025:4511",
+            "https://access.redhat.com/security/cve/CVE-2024-11831",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2312579",
+            "https://github.com/yahoo/serialize-javascript",
+            "https://github.com/yahoo/serialize-javascript/commit/7f3ac252d86b802454cb43782820aea2e0f6dc25",
+            "https://github.com/yahoo/serialize-javascript/commit/f27d65d3de42affe2aac14607066c293891cec4e",
+            "https://github.com/yahoo/serialize-javascript/pull/173",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-11831",
+            "https://www.cve.org/CVERecord?id=CVE-2024-11831"
+          ],
+          "PublishedDate": "2025-02-10T16:15:37.08Z",
+          "LastModifiedDate": "2025-04-24T13:15:44.573Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-43800",
+          "PkgID": "serve-static@1.15.0",
+          "PkgName": "serve-static",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/serve-static@1.15.0",
+            "UID": "2ed5ebbbf00ad2fb"
+          },
+          "InstalledVersion": "1.15.0",
+          "FixedVersion": "1.16.0, 2.1.0",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-43800",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "serve-static: Improper Sanitization in serve-static",
+          "Description": "serve-static serves static files. serve-static passes untrusted user input - even after sanitizing it - to redirect() may execute untrusted code. This issue is patched in serve-static 1.16.0.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-79"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 2,
+            "ghsa": 1,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+              "V3Score": 5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 4.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+              "V3Score": 5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-43800",
+            "https://github.com/expressjs/serve-static",
+            "https://github.com/expressjs/serve-static/commit/0c11fad159898cdc69fd9ab63269b72468ecaf6b",
+            "https://github.com/expressjs/serve-static/commit/ce730896fddce1588111d9ef6fdf20896de5c6fa",
+            "https://github.com/expressjs/serve-static/security/advisories/GHSA-cm22-4g7w-348p",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-43800",
+            "https://www.cve.org/CVERecord?id=CVE-2024-43800"
+          ],
+          "PublishedDate": "2024-09-10T15:15:17.937Z",
+          "LastModifiedDate": "2024-09-20T17:36:30.313Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2020-26308",
+          "PkgID": "validate.js@0.13.1",
+          "PkgName": "validate.js",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/validate.js@0.13.1",
+            "UID": "f8a9a4e5ee346e0a"
+          },
+          "InstalledVersion": "0.13.1",
+          "Status": "affected",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-26308",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "validate.js Regular Expression Denial of Service vulnerability",
+          "Description": "Validate.js provides a declarative way of validating javascript objects. Versions 0.13.1 and prior contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). As of time of publication, no known patches are available.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2
+          },
+          "References": [
+            "https://github.com/ansman/validate.js",
+            "https://github.com/ansman/validate.js/issues/342",
+            "https://nvd.nist.gov/vuln/detail/CVE-2020-26308",
+            "https://securitylab.github.com/advisories/GHSL-2020-302-redos-validate.js",
+            "https://securitylab.github.com/advisories/GHSL-2020-302-redos-validate.js/"
+          ],
+          "PublishedDate": "2024-10-26T21:15:14.087Z",
+          "LastModifiedDate": "2024-10-28T13:58:09.23Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-43788",
+          "PkgID": "webpack@5.88.2",
+          "PkgName": "webpack",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/webpack@5.88.2",
+            "UID": "7a453dbedba0328d"
+          },
+          "InstalledVersion": "5.88.2",
+          "FixedVersion": "5.94.0",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-43788",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "webpack: DOM Clobbering vulnerability in AutoPublicPathRuntimeModule",
+          "Description": "Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset. The webpack developers have discovered a DOM Clobbering vulnerability in Webpack’s `AutoPublicPathRuntimeModule`. The DOM Clobbering gadget in the module can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an `img` tag with an unsanitized `name` attribute) are present. Real-world exploitation of this gadget has been observed in the Canvas LMS which allows a XSS attack to happen through a javascript code compiled by Webpack (the vulnerable part is from Webpack). DOM Clobbering is a type of code-reuse attack where the attacker first embeds a piece of non-script, seemingly benign HTML markups in the webpage (e.g. through a post or comment) and leverages the gadgets (pieces of js code) living in the existing javascript code to transform it into executable code. This vulnerability can lead to cross-site scripting (XSS) on websites that include Webpack-generated files and allow users to inject certain scriptless HTML tags with improperly sanitized name or id attributes. This issue has been addressed in release version 5.94.0. All users are advised to upgrade. There are no known workarounds for this issue.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-79"
+          ],
+          "VendorSeverity": {
+            "azure": 2,
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:H",
+              "V3Score": 6.4
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+              "V3Score": 6.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-43788",
+            "https://github.com/webpack/webpack",
+            "https://github.com/webpack/webpack/commit/955e057abc6cc83cbc3fa1e1ef67a49758bf5a61",
+            "https://github.com/webpack/webpack/issues/18718#issuecomment-2326296270",
+            "https://github.com/webpack/webpack/security/advisories/GHSA-4vvj-4cpr-p986",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-43788",
+            "https://research.securitum.com/xss-in-amp4email-dom-clobbering",
+            "https://scnps.co/papers/sp23_domclob.pdf",
+            "https://www.cve.org/CVERecord?id=CVE-2024-43788"
+          ],
+          "PublishedDate": "2024-08-27T17:15:07.967Z",
+          "LastModifiedDate": "2024-09-03T15:15:15.937Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-29180",
+          "PkgID": "webpack-dev-middleware@5.3.3",
+          "PkgName": "webpack-dev-middleware",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/webpack-dev-middleware@5.3.3",
+            "UID": "3f1d86a6bf85ff8"
+          },
+          "InstalledVersion": "5.3.3",
+          "FixedVersion": "7.1.0, 6.1.2, 5.3.4",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-29180",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "webpack-dev-middleware: lack of URL validation may lead to file leak",
+          "Description": "Prior to versions 7.1.0, 6.1.2, and 5.3.4, the webpack-dev-middleware development middleware for devpack does not validate the supplied URL address sufficiently before returning the local file. It is possible to access any file on the developer's machine. The middleware can either work with the physical filesystem when reading the files or it can use a virtualized in-memory `memfs` filesystem. If `writeToDisk` configuration option is set to `true`, the physical filesystem is used. The `getFilenameFromUrl` method is used to parse URL and build the local file path. The public path prefix is stripped from the URL, and the `unsecaped` path suffix is appended to the `outputPath`. As the URL is not unescaped and normalized automatically before calling the midlleware, it is possible to use `%2e` and `%2f` sequences to perform path traversal attack.\n\nDevelopers using `webpack-dev-server` or `webpack-dev-middleware` are affected by the issue. When the project is started, an attacker might access any file on the developer's machine and exfiltrate the content. If the development server is listening on a public IP address (or `0.0.0.0`), an attacker on the local network can access the local files without any interaction from the victim (direct connection to the port). If the server allows access from third-party domains, an attacker can send a malicious link to the victim. When visited, the client side script can connect to the local server and exfiltrate the local files. Starting with fixed versions 7.1.0, 6.1.2, and 5.3.4, the URL is unescaped and normalized before any further processing.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-22"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N",
+              "V3Score": 7.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N",
+              "V3Score": 7.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-29180",
+            "https://github.com/webpack/webpack-dev-middleware",
+            "https://github.com/webpack/webpack-dev-middleware/blob/7ed24e0b9f53ad1562343f9f517f0f0ad2a70377/src/utils/getFilenameFromUrl.js#L82",
+            "https://github.com/webpack/webpack-dev-middleware/blob/7ed24e0b9f53ad1562343f9f517f0f0ad2a70377/src/utils/setupOutputFileSystem.js#L21",
+            "https://github.com/webpack/webpack-dev-middleware/commit/189c4ac7d2344ec132a4689e74dc837ec5be0132",
+            "https://github.com/webpack/webpack-dev-middleware/commit/9670b3495da518fe667ff3428c5e4cb9f2f3d353",
+            "https://github.com/webpack/webpack-dev-middleware/commit/e10008c762e4d5821ed6990348dabf0d4d93a10e",
+            "https://github.com/webpack/webpack-dev-middleware/releases/tag/v5.3.4",
+            "https://github.com/webpack/webpack-dev-middleware/releases/tag/v6.1.2",
+            "https://github.com/webpack/webpack-dev-middleware/releases/tag/v7.1.0",
+            "https://github.com/webpack/webpack-dev-middleware/security/advisories/GHSA-wr3j-pwj9-hqq6",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-29180",
+            "https://www.cve.org/CVERecord?id=CVE-2024-29180"
+          ],
+          "PublishedDate": "2024-03-21T17:15:09.69Z",
+          "LastModifiedDate": "2024-11-21T09:07:44.45Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-37890",
+          "PkgID": "ws@7.5.9",
+          "PkgName": "ws",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ws@7.5.9",
+            "UID": "f35506c4c67b016a"
+          },
+          "InstalledVersion": "7.5.9",
+          "FixedVersion": "5.2.4, 6.2.3, 7.5.10, 8.17.1",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-37890",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "nodejs-ws: denial of service when handling a request with many HTTP headers",
+          "Description": "ws is an open source WebSocket client and server for Node.js. A request with a number of headers exceeding theserver.maxHeadersCount threshold could be used to crash a ws server. The vulnerability was fixed in ws@8.17.1 (e55e510) and backported to ws@7.5.10 (22c2876), ws@6.2.3 (eeb76d3), and ws@5.2.4 (4abd8f6). In vulnerable versions of ws, the issue can be mitigated in the following ways: 1. Reduce the maximum allowed length of the request headers using the --max-http-header-size=size and/or the maxHeaderSize options so that no more headers than the server.maxHeadersCount limit can be sent. 2. Set server.maxHeadersCount to 0 so that no limit is applied.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-476"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-37890",
+            "https://github.com/websockets/ws",
+            "https://github.com/websockets/ws/commit/22c28763234aa75a7e1b76f5c01c181260d7917f",
+            "https://github.com/websockets/ws/commit/4abd8f6de4b0b65ef80b3ff081989479ed93377e",
+            "https://github.com/websockets/ws/commit/e55e5106f10fcbaac37cfa89759e4cc0d073a52c",
+            "https://github.com/websockets/ws/commit/eeb76d313e2a00dd5247ca3597bba7877d064a63",
+            "https://github.com/websockets/ws/issues/2230",
+            "https://github.com/websockets/ws/pull/2231",
+            "https://github.com/websockets/ws/security/advisories/GHSA-3h5v-q93c-6h6q",
+            "https://nodejs.org/api/http.html#servermaxheaderscount",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-37890",
+            "https://www.cve.org/CVERecord?id=CVE-2024-37890"
+          ],
+          "PublishedDate": "2024-06-17T20:15:13.203Z",
+          "LastModifiedDate": "2024-11-21T09:24:28.81Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-37890",
+          "PkgID": "ws@8.13.0",
+          "PkgName": "ws",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ws@8.13.0",
+            "UID": "816f09c735ed63f5"
+          },
+          "InstalledVersion": "8.13.0",
+          "FixedVersion": "5.2.4, 6.2.3, 7.5.10, 8.17.1",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-37890",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "nodejs-ws: denial of service when handling a request with many HTTP headers",
+          "Description": "ws is an open source WebSocket client and server for Node.js. A request with a number of headers exceeding theserver.maxHeadersCount threshold could be used to crash a ws server. The vulnerability was fixed in ws@8.17.1 (e55e510) and backported to ws@7.5.10 (22c2876), ws@6.2.3 (eeb76d3), and ws@5.2.4 (4abd8f6). In vulnerable versions of ws, the issue can be mitigated in the following ways: 1. Reduce the maximum allowed length of the request headers using the --max-http-header-size=size and/or the maxHeaderSize options so that no more headers than the server.maxHeadersCount limit can be sent. 2. Set server.maxHeadersCount to 0 so that no limit is applied.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-476"
+          ],
+          "VendorSeverity": {
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-37890",
+            "https://github.com/websockets/ws",
+            "https://github.com/websockets/ws/commit/22c28763234aa75a7e1b76f5c01c181260d7917f",
+            "https://github.com/websockets/ws/commit/4abd8f6de4b0b65ef80b3ff081989479ed93377e",
+            "https://github.com/websockets/ws/commit/e55e5106f10fcbaac37cfa89759e4cc0d073a52c",
+            "https://github.com/websockets/ws/commit/eeb76d313e2a00dd5247ca3597bba7877d064a63",
+            "https://github.com/websockets/ws/issues/2230",
+            "https://github.com/websockets/ws/pull/2231",
+            "https://github.com/websockets/ws/security/advisories/GHSA-3h5v-q93c-6h6q",
+            "https://nodejs.org/api/http.html#servermaxheaderscount",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-37890",
+            "https://www.cve.org/CVERecord?id=CVE-2024-37890"
+          ],
+          "PublishedDate": "2024-06-17T20:15:13.203Z",
+          "LastModifiedDate": "2024-11-21T09:24:28.81Z"
+        }
+      ]
+    }
+  ]
+}
