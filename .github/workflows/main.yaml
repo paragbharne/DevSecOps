@@ -88,12 +88,11 @@ jobs:
       # Dependency Scanning with OSV Scanner
       - name: Install OSV Scanner
         run: |
-          curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
-          chmod +x /usr/local/bin/osv-scanner
-          if ! [ -x /usr/local/bin/osv-scanner ]; then
-            echo "OSV Scanner installation failed"
-            exit 1
-          fi
+          curl -sSL -o osv-scanner https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64
+          chmod +x osv-scanner
+          sudo mv osv-scanner /usr/local/bin/osv-scanner
+          /usr/local/bin/osv-scanner --version
+    
 
       - name: Run OSV Scanner
         run: |
