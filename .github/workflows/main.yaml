@@ -5,9 +5,13 @@ on:
   push:
     branches:
       - main
+      - develop
+      - security-checks
   pull_request:
     branches:
       - main
+      - develop
+      - security-checks
 
 jobs:
   sast:
@@ -38,13 +42,11 @@ jobs:
           sarif_file: .github/codeql/codeql-results.sarif
           category: 'Codeql_report'
 
-      - name: Upload Lint Report
+      - name: Upload CodeQL Report
         uses: actions/upload-artifact@v4
         with:
-          name: Codeql_report
+          name: CodeQL-report
           path: .github/codeql/codeql-results.sarif
-
-
 
 #code-linting
       - name: Set up Node.js
@@ -58,45 +60,42 @@ jobs:
       - name: eslint instllation
         run: npm install eslint --save-dev
 
-      # - name: Run Linter
-      #   run: npm run lint # Ensure your project has a "lint" script in package.json
-
-      - name: Run Linter
-        run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
-
       - name: Run Linter
         run: |
-          echo "Running ESLint..."
-          npm run lint || true
-
-      - name: Run Linter
-        run: |
-          npm run lint > eslint-report.txt || true
-          cat eslint-report.txt
+          npx eslint . --format json -o eslint-results.json || true 
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4
         with:
           name: eslint-report
-          path: eslint-report.txt
+          path: eslint-results.json
 
-# Trivy for the dependecny scanning
 
-# Dependency Scanning with OSV Scanner
-      - name: Install OSV Scanner
+
+# # Dependency Scanning with OSV Scanner
+# # Step: Install Trivy
+      - name: Install Trivy
         run: |
-          curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
-          chmod +x /usr/local/bin/osv-scanner
-
-      - name: Run OSV Scanner
+          sudo apt-get install wget gnupg
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+          echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
+          sudo apt-get update
+          sudo apt-get install trivy -y
+          
+      # Step: Run Trivy Dependency Scan
+      - name: Run Trivy Dependency Scan
         run: |
-          osv-scanner --lockfile=package-lock.json > osv-results.txt || true
+          trivy fs . --scanners vuln --vuln-type library --format json --output trivy-results.json || true
 
-      - name: Upload OSV Scanner Report
+      # Step: Upload Trivy Reports
+      - name: Upload Trivy Reports
         uses: actions/upload-artifact@v4
         with:
-          name: osv-scanner-report
-          path: osv-results.txt
+          name: trivy-reports
+          path:  trivy-results.json
+
+
+
 
 #Docker build and scanning
 # Docker Build and Scanning with Trivy
@@ -126,8 +125,25 @@ jobs:
 
           # Secrets Detection in Github repos
 
-      - uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_CONFIG: .gitleaks.toml
-          exit_code: 0
+      # - uses: gitleaks/gitleaks-action@v2
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITLEAKS_CONFIG: .gitleaks.toml
+      #   with:
+      #     args: --verbose --exit-code 0
+      - name: Install and Run Gitleaks
+        run: |
+          GITLEAKS_VERSION=$(curl --silent "https://api.github.com/repos/gitleaks/gitleaks/releases/latest" | jq -r .tag_name)
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION#v}_linux_x64.tar.gz" -o gitleaks.tar.gz
+          mkdir gitleaks-bin
+          tar -xzf gitleaks.tar.gz -C gitleaks-bin
+          chmod +x gitleaks-bin/gitleaks
+          ./gitleaks-bin/gitleaks detect --source=. --config=.gitleaks.toml --report-format=json --report-path=gitleaks-report.json --exit-code 0 --redact
+      
+        
+      - name: Upload Gitleaks Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-report
+          path: gitleaks-report.json
+        
