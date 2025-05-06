@@ -1,58 +1,139 @@
-# IMPORTANT UPDATE 2024-05-01
+# 🔐 DevSecOps Pipeline for Your Repository
 
-Better use [Vite + React + MUI starter](https://github.com/karpolan/react-mui-vite-ts) instead of this one.
+This project integrates a comprehensive GitHub Actions–based DevSecOps pipeline to ensure secure coding practices, dependency management, and container security.
 
-Reasons:
-- [Create React App](https://create-react-app.dev/) is **not popular** anymore.
-- Development and debugging using **[Vite](https://vitejs.dev/)** is 10x faster than with Webpack.
+---
 
+## ✅ Pipeline Overview
 
-# React + Material UI + Auth starter using TypeScript
+The pipeline is triggered automatically on:
+- Push events to `main` or `security-checks` branches.
+- Pull requests targeting the `main` branch.
+- Manual dispatch via GitHub Actions.
 
-The **TypeScript** edition of **Create React App** plus **Material UI** with set of **reusable components** and utilities to build professional **React Application** faster.
+---
 
-- [Source Code](https://github.com/karpolan/react-typescript-material-ui-with-auth-starter)
-- [Online Demo](https://react-typescript-material.netlify.app/)
+## 🧭 Features Overview
 
-## How to use
+| **Security Check Type**               | **Tool Used**        | **Description**                                                             |
+|--------------------------------------|----------------------|-----------------------------------------------------------------------------|
+| **Static Application Security Testing (SAST)** | CodeQL           | Identifies vulnerabilities like SQLi, XSS, and other coding flaws.          |
+| **Dependency Scanning**              | Trivy (Filesystem)   | Scans project dependencies for known vulnerabilities.                       |
+| **Code Linting with Security Rules** | ESLint               | Enforces secure JavaScript/TypeScript coding standards.                     |
+| **Secret Scanning**                  | Gitleaks             | Detects hardcoded secrets such as API keys and tokens.                      |
+| **Container Image Scanning**         | Trivy (Image)        | Scans Docker images for OS and library vulnerabilities.                     |
 
-1. Clone or download the repo from: https://github.com/karpolan/react-typescript-material-ui-with-auth-starter
-2. Replace `_TITLE_` and `_DESCRIPTION_` in all files with own texts
-3. Create **Favorite Icon** images and put them into `/public/img/favicon`, the **favicon.ico** file should be paced into root of `/public` folder.
-4. Add your own code :)
+---
 
-## Available Scripts
+## 🧪 1. Static Application Security Testing (SAST)
 
-In the project directory, you can run:
+- **🔧 Tool:** GitHub CodeQL  
+- **📦 Language:** JavaScript/TypeScript
 
-### `npm start` or `npm run dev`
+CodeQL analyzes the source code to detect common security vulnerabilities.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Output:**  
+- `codeql-results.sarif` (SARIF report)
 
-### `npm run type`
+---
 
-Checks the code for errors and missing things using **TypeScript compiler**
+## 📦 2. Dependency Scanning
 
-### `npm run lint`
+- **🔧 Tool:** Trivy
 
-Checks the code for errors and missing things using **ESLint**
+Trivy scans your project for vulnerabilities in open-source dependencies listed in:
+- `package.json`
+- `yarn.lock`
 
-### `npm run format`
+**Output:**  
+- `trivy-results.json` (JSON report)
 
-Formats the code according to `./prettierrc.js` config
+---
 
-### `npm test`
+## 🧹 3. Code Linting with Security Rules
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **🔧 Tool:** ESLint  
+- **🔒 Plugins:**
+  - `eslint-plugin-security`
+  - `eslint-plugin-node`
 
-### `npm run build`
+This ensures secure JavaScript/TypeScript coding practices and identifies potential issues with:
+- Node.js APIs
+- Common JS misuses
+- Insecure code patterns
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Output:**  
+- `eslint-results.json`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔐 4. Secret Scanning
+
+- **🔧 Tool:** Gitleaks
+
+Gitleaks scans for secrets like:
+- API keys
+- Access tokens
+- Passwords in source files or history
+
+**Output Includes:**  
+- Rule ID  
+- Commit ID  
+- File and line number  
+- Author and timestamp
+
+---
+
+## 🐳 5. Container Image Scanning
+
+- **🔧 Tool:** Trivy
+
+After building the Docker image, Trivy scans it for vulnerabilities in:
+- Operating system layers
+- Application dependencies
+
+**Output:**  
+- `trivy-report.json`
+
+---
+
+## 🗂 Artifacts Uploaded
+
+Each tool’s results are uploaded as downloadable artifacts:
+- `eslint-results.json`
+- `trivy-results.json`
+- `trivy-report.json`
+- `codeql-results.sarif`
+
+---
+
+## 🚀 When Does the Pipeline Run?
+
+The workflow triggers:
+- On push to `main` or `security-checks`
+- On pull request to `main`
+- Manually via GitHub Actions
+
+---
+
+## 📌 Requirements for Local Testing
+
+To test these tools locally, use the following commands:
+
+```bash
+# Install dependencies
+npm install
+
+# Run ESLint
+npx eslint . --ext .js,.jsx,.ts,.tsx
+
+# Install and run Trivy
+sudo apt-get install wget gnupg -y
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy -y
+trivy fs .
+
+# Run Gitleaks
+gitleaks detect --source=. --report-format=json

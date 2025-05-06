@@ -122,9 +122,31 @@ jobs:
 
           # Secrets Detection in Github repos
 
-      - uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_CONFIG: .gitleaks.toml
+      # - uses: gitleaks/gitleaks-action@v2
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITLEAKS_CONFIG: .gitleaks.toml
+      #   with:
+      #     args: --verbose --exit-code 0
+      - name: Install Gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
+          chmod +x gitleaks
+          sudo mv gitleaks /usr/local/bin/gitleaks
+      
+      - name: Run Gitleaks Secret Scan (with custom config + exit-code 0)
+        run: |
+          gitleaks detect \
+            --config=.gitleaks.toml \
+            --source=. \
+            --report-format=json \
+            --report-path=gitleaks-report.json \
+            --redact \
+            --exit-code 0
+      
+      - name: Upload Gitleaks Report
+        uses: actions/upload-artifact@v4
         with:
-          args: --verbose --exit-code 0
+          name: gitleaks-report
+          path: gitleaks-report.json
+        
