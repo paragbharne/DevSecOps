@@ -60,7 +60,7 @@ jobs:
 
       - name: Run Linter
         run: |
-          npx eslint --format json -o eslint-results.json || true  
+          npx eslint . --format json -o eslint-results.json  
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4
@@ -68,23 +68,43 @@ jobs:
           name: eslint-report
           path: eslint-results.json
 
-# Trivy for the dependecny scanning
+
 
 # Dependency Scanning with OSV Scanner
+      # - name: Install OSV Scanner
+      #   run: |
+      #     curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
+      #     chmod +x /usr/local/bin/osv-scanner
+
+      # - name: Run OSV Scanner
+      #   run: |
+      #     osv-scanner --lockfile=package-lock.json > osv-results.txt || true
+
+      # - name: Upload OSV Scanner Report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: osv-scanner-report
+      #     path: osv-results.txt
+      # Dependency Scanning with OSV Scanner
       - name: Install OSV Scanner
         run: |
           curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
           chmod +x /usr/local/bin/osv-scanner
+          if ! [ -x /usr/local/bin/osv-scanner ]; then
+            echo "OSV Scanner installation failed"
+            exit 1
+          fi
 
       - name: Run OSV Scanner
         run: |
-          osv-scanner --lockfile=package-lock.json > osv-results.txt || true
+          osv-scanner --lockfile=package-lock.json --format=json > osv-results.json || true
 
       - name: Upload OSV Scanner Report
         uses: actions/upload-artifact@v4
         with:
           name: osv-scanner-report
-          path: osv-results.txt
+          path: osv-results.json
+
 
 #Docker build and scanning
 # Docker Build and Scanning with Trivy
