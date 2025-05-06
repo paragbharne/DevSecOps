@@ -2,6 +2,8 @@
 
 This project integrates a comprehensive GitHub Actions–based DevSecOps pipeline to ensure secure coding practices, dependency management, and container security.
 
+The implementations focus on preventing and identifying security vulnerabilities, also helping to detect secrets used, resolve dependency issues, and improve processes aligned with standard security guidelines, resulting in smoother development.
+
 ---
 
 ## ✅ Pipeline Overview
@@ -10,6 +12,13 @@ The pipeline is triggered automatically on:
 - Push events to `main` or `security-checks` branches.
 - Pull requests targeting the `main` branch.
 - Manual dispatch via GitHub Actions.
+
+---
+## Pipeline Summary
+![image](https://github.com/user-attachments/assets/fd102344-70a8-485a-8260-cb9972f24d13)
+
+## Pipeline Artifacts
+![image](https://github.com/user-attachments/assets/583f9415-229d-43cd-8b5f-d20782cde41c)
 
 ---
 
