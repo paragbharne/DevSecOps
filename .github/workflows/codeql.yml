@@ -13,7 +13,7 @@ name: "CodeQL Advanced"
 
 on:
   push:
-    branches: [ "main", "security-scan" ]
+    branches: [ "main", "security-checks" ]
   pull_request:
     branches: [ "main" ]
   schedule:
