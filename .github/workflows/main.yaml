@@ -128,23 +128,16 @@ jobs:
       #     GITLEAKS_CONFIG: .gitleaks.toml
       #   with:
       #     args: --verbose --exit-code 0
-      - name: Install Gitleaks
+      - name: Install and Run Gitleaks
         run: |
-          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
-          chmod +x gitleaks
-          sudo mv gitleaks /usr/local/bin/gitleaks
-    
+          GITLEAKS_VERSION=$(curl --silent "https://api.github.com/repos/gitleaks/gitleaks/releases/latest" | jq -r .tag_name)
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION#v}_linux_x64.tar.gz" -o gitleaks.tar.gz
+          mkdir gitleaks-bin
+          tar -xzf gitleaks.tar.gz -C gitleaks-bin
+          chmod +x gitleaks-bin/gitleaks
+          ./gitleaks-bin/gitleaks detect --source=. --config=.gitleaks.toml --report-format=json --report-path=gitleaks-results.json --exit-code 0 --redact
       
-      - name: Run Gitleaks Secret Scan (with custom config + exit-code 0)
-        run: |
-          gitleaks detect \
-            --config=.gitleaks.toml \
-            --source=. \
-            --report-format=json \
-            --report-path=gitleaks-report.json \
-            --redact \
-            --exit-code 0
-      
+        
       - name: Upload Gitleaks Report
         uses: actions/upload-artifact@v4
         with:
