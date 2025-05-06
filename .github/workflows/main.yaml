@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - security-checks
   pull_request:
     branches:
       - main
@@ -71,34 +72,29 @@ jobs:
 
 
 # Dependency Scanning with OSV Scanner
-      # - name: Install OSV Scanner
-      #   run: |
-      #     curl -sSL https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64 -o /usr/local/bin/osv-scanner
-      #     chmod +x /usr/local/bin/osv-scanner
+# Step: Install Trivy
+      - name: Install Trivy
+        run: |
+          sudo apt-get install wget gnupg
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+          echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
+          sudo apt-get update
+          sudo apt-get install trivy -y
+          
+      # Step: Run Trivy Dependency Scan
+      - name: Run Trivy Dependency Scan
+        run: |
+          mkdir -p trivy-reports
+          trivy fs . --scanners vuln --vuln-type library --format json --output trivy-results.json || true
 
-      # - name: Run OSV Scanner
-      #   run: |
-      #     osv-scanner --lockfile=package-lock.json > osv-results.txt || true
-
-      # - name: Upload OSV Scanner Report
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: osv-scanner-report
-      #     path: osv-results.txt
-      # Dependency Scanning with OSV Scanner
-      - name: OSV Scanner
-        uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.0.2"
-        with:
-          scan-args: |-
-            --recursive
-            ./
-
-
-      - name: Upload OSV Scanner Report
+      # Step: Upload Trivy Reports
+      - name: Upload Trivy Reports
         uses: actions/upload-artifact@v4
         with:
-          name: converted-OSV-Scanner-deps
-          path: osv-scanner-deps.json
+          name: trivy-reports
+          path:  trivy-results.json
+
+
 
 
 #Docker build and scanning
