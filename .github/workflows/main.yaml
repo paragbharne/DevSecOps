@@ -135,7 +135,7 @@ jobs:
           mkdir gitleaks-bin
           tar -xzf gitleaks.tar.gz -C gitleaks-bin
           chmod +x gitleaks-bin/gitleaks
-          ./gitleaks-bin/gitleaks detect --source=. --config=.gitleaks.toml --report-format=json --report-path=gitleaks-results.json --exit-code 0 --redact
+          ./gitleaks-bin/gitleaks detect --source=. --config=.gitleaks.toml --report-format=json --report-path=gitleaks-report.json --exit-code 0 --redact
       
         
       - name: Upload Gitleaks Report
