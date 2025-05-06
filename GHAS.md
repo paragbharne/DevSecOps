@@ -42,7 +42,7 @@ This documentation outlines the integration of GHAS into a sample Node.js projec
 
 ---
 
-## 📷 Screenshots Attached:
+## 📷 Output:
 
 1. **Dependabot Alerts**:
    - Shows detected CVEs in `package.json` and `yarn.lock`.
@@ -55,6 +55,14 @@ This documentation outlines the integration of GHAS into a sample Node.js projec
 
 4. **Security Dashboard**:
    - Provides a centralized view of all security alerts and their statuses.
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
 
 ---
 
@@ -87,19 +95,8 @@ This documentation outlines the integration of GHAS into a sample Node.js projec
    - Even test keys are flagged, requiring careful handling of test credentials.
 
 ---
-## ✅ 4. Screenshots
 
-![alt text](image.png)
-
-![alt text](image-1.png)
-
-![alt text](image-2.png)
-
-![alt text](image-3.png)
-
----
-
-## ✅ 5. Conclusion
+## ✅ 4. Conclusion
 
 After enabling GHAS and configuring the pipeline:
 
