@@ -1,8 +1,8 @@
-# 🛡️ GitHub Advanced Security (GHAS) Integration – Technical Documentation
+# 🛡 GitHub Advanced Security (GHAS) Integration
 
 ---
 
-## 📌 1. Context – Why Are We Doing This?
+## 📌 1. Purpose
 
 Security is a critical aspect of modern software development. By integrating GitHub Advanced Security (GHAS) into our DevSecOps pipeline, we aim to identify and mitigate security vulnerabilities early in the development lifecycle. This ensures secure coding practices, dependency hygiene, and secret management.
 
@@ -15,14 +15,14 @@ This documentation outlines the integration of GHAS into a sample Node.js projec
 
 ---
 
-## 🔬 2. Thought Process (Integration Details)
+## 🔬 2. Integration
 
 ### 🔧 Tooling Selected:
 1. **CodeQL**: A static code analysis engine that identifies vulnerabilities in JavaScript/TypeScript code.
 2. **Dependabot**: Scans `package.json` and `yarn.lock` for vulnerable dependencies.
 3. **GitHub Secret Scanning**: Detects hardcoded secrets like API keys, passwords, and tokens.
 
-### 🧪 Repository Setup:
+### 🧪 Setting and configuration:
 1. **Repository Creation**:
    - Created a GitHub repository for a sample Node.js application.
    - Pushed intentionally vulnerable code to test the integration.
@@ -42,7 +42,7 @@ This documentation outlines the integration of GHAS into a sample Node.js projec
 
 ---
 
-## 📷 Output:
+## 📷 Result / Outcomes:
 
 1. **Dependabot Alerts**:
    - Shows detected CVEs in `package.json` and `yarn.lock`.
@@ -66,7 +66,7 @@ This documentation outlines the integration of GHAS into a sample Node.js projec
 
 ---
 
-## 📊 3. Impact Analysis (Benefits and Considerations)
+## 📊 3.Analysis
 
 ### ✅ Benefits:
 1. **Shift-Left Security**:
@@ -84,7 +84,7 @@ This documentation outlines the integration of GHAS into a sample Node.js projec
 5. **Low Overhead**:
    - Native integration with GitHub Actions eliminates the need for additional tools or agents.
 
-### ⚠️ Tradeoffs:
+### ⚠️ Advantages:
 1. **CI/CD Overhead**:
    - CodeQL scans may add 30–60 seconds to CI jobs, depending on the project size.
 
