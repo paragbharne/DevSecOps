@@ -16,8 +16,12 @@ on:
     branches:
       - main
       - security-checks
+      - develop
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+      - security-checks
+      - develop
   schedule:
     - cron: '35 13 * * 5'
 
