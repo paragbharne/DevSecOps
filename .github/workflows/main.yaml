@@ -86,23 +86,19 @@ jobs:
       #     name: osv-scanner-report
       #     path: osv-results.txt
       # Dependency Scanning with OSV Scanner
-      - name: Install OSV Scanner
-        run: |
-          curl -sSL -o osv-scanner https://github.com/google/osv-scanner/releases/latest/download/osv-scanner-linux-amd64
-          chmod +x osv-scanner
-          sudo mv osv-scanner /usr/local/bin/osv-scanner
-          /usr/local/bin/osv-scanner --version
-    
+      - name: OSV Scanner
+        uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.0.2"
+        with:
+          scan-args: |-
+            --recursive
+            ./
 
-      - name: Run OSV Scanner
-        run: |
-          osv-scanner --lockfile=package-lock.json --format=json > osv-results.json || true
 
       - name: Upload OSV Scanner Report
         uses: actions/upload-artifact@v4
         with:
-          name: osv-scanner-report
-          path: osv-results.json
+          name: converted-OSV-Scanner-deps
+          path: osv-scanner-deps.json
 
 
 #Docker build and scanning
