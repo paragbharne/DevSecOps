@@ -1,19 +1,72 @@
 {
-  "name": "nodejs-webapp",
-  "version": "0.0.0",
-  "description": "nodejs-webapp",
-  "main": "server.js",
+  "name": "react-typescript-material",
+  "version": "2.1.19",
+  "description": "_DESCRIPTION_",
   "type": "module",
   "author": {
-    "name": "alagrawa"
+    "name": "Anton Karpenko",
+    "email": "i@karpolan.com",
+    "url": "https://karpolan.com"
   },
-  "dependencies": {
-    "natives": "^1.1.6"
+  "private": true,
+  "keywords": [
+    "react",
+    "typescript",
+    "material",
+    "mui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "put your repo url here..."
   },
   "scripts": {
-    "lint": "eslint ."
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "react-scripts start",
+    "dev:update": "npm i && react-scripts start",
+    "format": "prettier ./src --write",
+    "format:all": "prettier . --write",
+    "lint": "eslint ./src --ext .js,.ts,.tsx",
+    "type": "tsc",
+    "test": "react-scripts test"
+  },
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "date-fns": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "react-scripts": "latest",
+    "validate.js": "latest",
+    "web-vitals": "latest"
   },
   "devDependencies": {
-    "eslint": "^9.26.0"
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/user-event": "latest",
+    "@tsconfig/create-react-app": "latest",
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/react-router-dom": "latest",
+    "eslint": "^8.57.1",
+    "prettier": "latest",
+    "typescript": "latest"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

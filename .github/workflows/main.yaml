@@ -58,27 +58,15 @@ jobs:
       - name: eslint instllation
         run: npm install eslint --save-dev
 
-      # - name: Run Linter
-      #   run: npm run lint # Ensure your project has a "lint" script in package.json
-
-      - name: Run Linter
-        run: npm run lint > eslint-report.txt || true # Save output to a file and prevent failure on lint errors
-
       - name: Run Linter
         run: |
-          echo "Running ESLint..."
-          npm run lint || true
-
-      - name: Run Linter
-        run: |
-          npm run lint > eslint-report.txt || true
-          cat eslint-report.txt
+          npx eslint --format json -o eslint-results.json || true  
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4
         with:
           name: eslint-report
-          path: eslint-report.txt
+          path: eslint-results.json
 
 # Trivy for the dependecny scanning
 
