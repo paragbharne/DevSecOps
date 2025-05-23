@@ -38,7 +38,7 @@
     "date-fns": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "latest",
+    "react-router-dom": "6.30.0",
     "react-scripts": "latest",
     "validate.js": "latest",
     "web-vitals": "latest"
