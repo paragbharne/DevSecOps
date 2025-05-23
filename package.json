@@ -37,7 +37,7 @@
     "@mui/material": "latest",
     "date-fns": "latest",
     "react": "latest",
-    "react-dom": "latest",
+    "react-dom": "18.3.1",
     "react-router-dom": "latest",
     "react-scripts": "latest",
     "validate.js": "latest",
